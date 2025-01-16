@@ -25,7 +25,12 @@ Before running the script, ensure the following are installed:
    - [Download FFmpeg](https://ffmpeg.org/download.html)
    - Add FFmpeg to your system PATH.
 
-3. **Git** (Optional)
+3. **Firefox**
+   - The script is set up to work with Firefox because thats what I use and it's my repo so I make the rules.
+   - [Download Firefox](https://www.mozilla.org/en-US/firefox/new/)
+   - Make sure you're signed into TikTok in Firefox.
+
+4. **Git** (Optional)
    - For downloading the repository.
    - [Download Git](https://git-scm.com/)
 
