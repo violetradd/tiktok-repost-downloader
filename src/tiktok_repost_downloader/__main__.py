@@ -13,11 +13,15 @@ from selenium.webdriver.firefox.service import Service
 from webdriver_manager.firefox import GeckoDriverManager
 
 
-def fetch_reposted_urls(username: str, output_file: str = "reposted_urls.json") -> list[str]:
+def fetch_reposted_urls(
+    username: str, output_file: str = "reposted_urls.json",
+) -> list[str]:
     """Fetch reposted TikTok video URLs and save them to a JSON file."""
     options = webdriver.FirefoxOptions()
     options.add_argument("--headless")
-    driver = webdriver.Firefox(service=Service(GeckoDriverManager().install()), options=options)
+    driver = webdriver.Firefox(
+        service=Service(GeckoDriverManager().install()), options=options,
+    )
 
     try:
         profile_url = f"https://www.tiktok.com/@{username}?lang=en"
@@ -62,12 +66,14 @@ def download_videos(video_urls: list[str], output_dir: str = "tiktok_videos") ->
     os.makedirs(output_dir, exist_ok=True)
 
     ydl_opts = {
-        'outtmpl': os.path.join(output_dir, '%(id)s.%(ext)s'),  # Simplified filename format
-        'format': 'mp4',
-        'quiet': False,
-        'windowsfilenames': True,
-        'ignoreerrors': True,
-        'sleep_interval': 2,
+        "outtmpl": os.path.join(
+            output_dir, "%(id)s.%(ext)s",
+        ),  # Simplified filename format
+        "format": "mp4",
+        "quiet": False,
+        "windowsfilenames": True,
+        "ignoreerrors": True,
+        "sleep_interval": 2,
     }
 
     try:
@@ -85,6 +91,7 @@ def main(argv: list[str] | None = None) -> None:
     print("Starting video downloads...")
     download_videos(reposted_urls)
     print("Video download process completed!")
+
 
 if __name__ == "__main__":
     main()
