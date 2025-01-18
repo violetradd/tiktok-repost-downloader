@@ -1,0 +1,43 @@
+[project]
+name = "tiktok-repost-downloader"
+version = "0.0.1"
+description = ""
+readme = "README.md"
+requires-python = ">=3.7"
+license = {text = "Unlicense"}
+keywords = ["social media"]
+authors = [
+    {name = "Violet Radd", email = "metatronzero1999@gmail.com"}
+]
+maintainers = [
+    {name = "Violet Radd", email = "metatronzero1999@gmail.com"}
+]
+classifiers = [
+    "License :: OSI Approved :: Unlicense",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3 :: Only",
+]
+dependencies = [
+    "selenium~=4.27.1", "webdriver-manager~=4.0.2", "yt-dlp~=2025.1.15"
+]
+
+[project.scripts]
+tiktok-repost-downloader = "tiktok_repost_downloader.__main__:main"
+
+[project.urls]
+"Homepage" = "https://github.com/violetradd/tiktok-repost-downloader"
+"Bug Reports" = "https://github.com/violetradd/tiktok-repost-downloader/issues"
+"Source" = "https://github.com/violetradd/tiktok-repost-downloader"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[build-system]
+requires = ["setuptools", "setuptools-scm", "wheel"]
+build-backend = "setuptools.build_meta"

@@ -1,22 +1,10 @@
-import os
+#!/usr/bin/env python
+
+from __future__ import annotations
+
 import json
-import subprocess
-import sys
+import os
 import time
-
-# Ensure required packages are installed
-REQUIRED_PACKAGES = ["selenium", "webdriver-manager", "yt-dlp"]
-
-def install_dependencies():
-    """Install missing dependencies."""
-    for package in REQUIRED_PACKAGES:
-        try:
-            __import__(package.replace("-", "_"))  # Import to check if installed
-        except ImportError:
-            print(f"Installing missing package: {package}")
-            subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-
-install_dependencies()
 
 import yt_dlp
 from selenium import webdriver
@@ -24,7 +12,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.service import Service
 from webdriver_manager.firefox import GeckoDriverManager
 
-def fetch_reposted_urls(username, output_file="reposted_urls.json"):
+
+def fetch_reposted_urls(username: str, output_file: str = "reposted_urls.json") -> list[str]:
     """Fetch reposted TikTok video URLs and save them to a JSON file."""
     options = webdriver.FirefoxOptions()
     options.add_argument("--headless")
@@ -67,7 +56,8 @@ def fetch_reposted_urls(username, output_file="reposted_urls.json"):
     finally:
         driver.quit()
 
-def download_videos(video_urls, output_dir="tiktok_videos"):
+
+def download_videos(video_urls: list[str], output_dir: str = "tiktok_videos") -> None:
     """Download TikTok videos using yt-dlp."""
     os.makedirs(output_dir, exist_ok=True)
 
@@ -86,7 +76,8 @@ def download_videos(video_urls, output_dir="tiktok_videos"):
     except Exception as e:
         print(f"Error encountered: {str(e)}")
 
-if __name__ == "__main__":
+
+def main(argv: list[str] | None = None) -> None:
     username = input("Enter your TikTok username: ")
 
     reposted_urls = fetch_reposted_urls(username)
@@ -94,3 +85,6 @@ if __name__ == "__main__":
     print("Starting video downloads...")
     download_videos(reposted_urls)
     print("Video download process completed!")
+
+if __name__ == "__main__":
+    main()
