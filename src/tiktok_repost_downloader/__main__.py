@@ -202,7 +202,7 @@ def main(argv: list[str] | None = None) -> int:
         reposted_urls = fetch_reposted_urls(
             username,
             hide_browser=not args.show_browser,
-            reposted_urls_file=pathlib.Path(args.reposted_urls_file),
+            reposts_urls_file=pathlib.Path(args.reposted_urls_file),
         )
 
         logging.info("Starting video downloads (this will take a while)...")
