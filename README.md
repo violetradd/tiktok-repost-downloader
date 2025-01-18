@@ -14,6 +14,7 @@ A Python script to automate the process of downloading all videos from the "Repo
 ---
 
 ## Requirements
+
 Before running the script, ensure the following are installed:
 
 1. **Python 3.7 or higher**
@@ -21,12 +22,12 @@ Before running the script, ensure the following are installed:
    - Make sure Python is added to your system PATH.
 
 2. **FFmpeg**
-   - FFmpeg is required by yt-dlp for post-processing tasks (e.g., adding metadata).
+   - FFmpeg is required by yt-dlp for post-processing tasks, e.g., adding metadata.
    - [Download FFmpeg](https://ffmpeg.org/download.html)
    - Add FFmpeg to your system PATH.
 
 3. **Firefox**
-   - The script is set up to work with Firefox because thats what I use and it's my repo so I make the rules.
+   - The script is set up to work with Firefox because that's what I use and it's my repo so I make the rules.
    - [Download Firefox](https://www.mozilla.org/en-US/firefox/new/)
    - Make sure you're signed into TikTok in Firefox.
 
@@ -38,26 +39,13 @@ Before running the script, ensure the following are installed:
 
 ## Installation
 
-1. **Clone the Repository**:
+1. **Install the Repository via Pip**:
    ```bash
-   git clone https://github.com/violetradd/tiktok-repost-downloader.git
-   cd tiktok-repost-downloader
+   $ pip install https://github.com/violetradd/tiktok-repost-downloader.git
    ```
+   [pipx](https://pipx.pypa.io/latest/) is highly recommended over pip. pipx does better application encapsulation/isolation than pip.
 
-   Or you could just download the source from GitHub if you want.
-
-2. **Install Dependencies**:
-   The script automatically installs Python dependencies (if missing):
-   - `selenium`
-   - `webdriver-manager`
-   - `yt-dlp`
-
-   If you prefer manual installation:
-   ```bash
-   pip install selenium webdriver-manager yt-dlp
-   ```
-
-3. **Install FFmpeg**:
+2. **Install FFmpeg**:
    Follow the [FFmpeg installation guide](https://ffmpeg.org/download.html) to install and add FFmpeg to your system PATH.
 
 ---
@@ -66,11 +54,16 @@ Before running the script, ensure the following are installed:
 
 1. **Run the Script**:
    ```bash
-   python app.py
+   $ tiktok-repost-downloader
    ```
 
 2. **Enter Your TikTok Username**:
    When prompted, enter your TikTok username.
+
+   You can alternatively specify your username on the commandline, e.g.,
+   ```bash
+   $ tiktok-repost-downloader --username <tiktok-username>
+   ```
 
 3. **Fetching URLs**:
    - The script will check if a `reposted_urls.json` file exists and is not empty.
@@ -94,9 +87,12 @@ Before running the script, ensure the following are installed:
 ## Notes
 - Ensure that your TikTok profile has a "Reposts" tab; otherwise, the script will fail to fetch URLs.
 - If the script encounters issues (e.g., unable to find elements), update your Selenium WebDriver or modify the XPaths/CSS Selectors in the code.
-- To update the dependencies manually:
+- To update the dependencies manually, do the following:
   ```bash
-  pip install --upgrade selenium webdriver-manager yt-dlp
+  # If using pip:
+  $ pip install --upgrade selenium webdriver-manager yt-dlp
+  # If using pipx:
+  $ pipx upgrade tiktok-repost-downloader
   ```
 - Ensure you're logged into TikTok on Firefox and that your profile is set to 'Pubic'
 ---
